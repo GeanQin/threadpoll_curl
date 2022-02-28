@@ -170,11 +170,15 @@ int main(int argc, char *argv[])
     printf("\n----------------------------------------------\n%s------------- download complete! -------------\n\n", asctime(gmtime(&time_header)));
 
     FILE *fp = fopen(argv[2], "w");
-    if(fp ==NULL){
+    if(fp == NULL)
+	{
         fprintf(stderr, "cannot open %s\n", argv[2]);
     }
-    fwrite(file_buf, sizeof(unsigned char), all_download_size, fp);
-    fclose(fp);
+	else
+	{
+		fwrite(file_buf, sizeof(unsigned char), all_download_size, fp);
+		fclose(fp);
+	}
 
     if (file_buf)
     {
